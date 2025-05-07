@@ -149,7 +149,7 @@ jobs:
             --registry-server "${{ env.ACR_REGISTRY }}" \
             --registry-username "${{ env.ACR_USERNAME }}" \
             --registry-password "${{ env.ACR_PASSWORD }}"
-            --env-vars \
+            --set-env-vars \
                DATABASE_URL=${{ secrets.DATABASE_URL }} \
                DIRECT_URL=${{ secrets.DIRECT_URL }} \
                SERVER_URL=${{ secrets.SERVER_URL }} \

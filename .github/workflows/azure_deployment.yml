@@ -354,7 +354,7 @@ env:
   RESOURCE_GROUP: HackerNews
   CONTAINER_APPS_ENVIRONMENT: HackerNewsContainerAppsEnvironment
   LOG_ANALYTICS_WORKSPACE: HackerNewsLogAnalyticsWorkspace
-  ACR_REGISTRY: 1si21is046.azurecr.io
+  ACR_REGISTRY: hackernews1si21is046.azurecr.io
   ACR_REPOSITORY_NAME: hackernews
   CONTAINER_APP_NAME: hackernews
   TARGET_PORT: 3000

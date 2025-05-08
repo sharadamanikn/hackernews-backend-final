@@ -1,33 +1,33 @@
 import type { Comment } from "../../generated/prisma/index.js";
 
 export enum CommentPostError {
-  NOT_FOUND,
-  UNAUTHORIZED,
+	NOT_FOUND,
+	UNAUTHORIZED,
 }
 
 export type CommentPostResult = {
-  comment: Comment;
+	comment: Comment;
 };
 
 export type GetCommentPost = {
-  comments: Array<Comment>;
-  total: number;
+	comments: Array<Comment>;
+	total: number;
 };
 export enum GetCommentPostError {
-  BAD_REQUEST,
-  UNAUTHORIZED,
+	BAD_REQUEST,
+	UNAUTHORIZED,
 }
 
 export enum DeleteCommentError {
-  NOT_FOUND,
-  UNAUTHORIZED,
+	NOT_FOUND,
+	UNAUTHORIZED,
 }
 
 export type UpdateCommet = {
-  comment: Comment;
+	comment: Comment;
 };
 
 export enum UpdateCommetError {
-  NOT_FOUND,
-  UNAUTHORIZED,
+	NOT_FOUND,
+	UNAUTHORIZED,
 }

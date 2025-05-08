@@ -1,26 +1,26 @@
 import type { Like } from "../../generated/prisma/index.js";
 
 export enum LikePostError {
-  NOT_FOUND,
-  ALREADY_LIKED,
-  UNAUTHORIZED,
+	NOT_FOUND,
+	ALREADY_LIKED,
+	UNAUTHORIZED,
 }
 
 export type LikePostResult = {
-  like: Like;
+	like: Like;
 };
 
 export type GetLikePost = {
-  likes: Array<Like>;
-  total: number;
+	likes: Array<Like>;
+	total: number;
 };
 export enum GetLikePostError {
-  BAD_REQUEST,
-  UNAUTHORIZED,
+	BAD_REQUEST,
+	UNAUTHORIZED,
 }
 
 export enum DeleteLikeError {
-  NOT_FOUND,
-  UNAUTHORIZED,
-  LIKE_NOT_FOUND,
+	NOT_FOUND,
+	UNAUTHORIZED,
+	LIKE_NOT_FOUND,
 }

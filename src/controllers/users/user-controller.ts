@@ -1,5 +1,5 @@
 
-import { prismaClient } from "../../extras/prisma.js";
+import { prismaClient } from "../../integrations/prisma";
 import {
   GetMeError,
   usersError,

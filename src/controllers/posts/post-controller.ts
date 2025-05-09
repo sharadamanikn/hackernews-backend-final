@@ -1,5 +1,4 @@
-import type { Context } from "hono";
-import { prismaClient } from "../../extras/prisma.js";
+import { prismaClient } from "../../integrations/prisma";
 import { GetMeError } from "../users/user-types.js";
 import {
   type CreatePostInput,

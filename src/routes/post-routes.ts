@@ -8,14 +8,14 @@ import {
   getPastPosts,
   getPostsByUser,
   searchPosts
-} from "../controllers/posts/post-controller.js";
+} from "../controllers/posts/post-controller";
 import {
   CreatePostError,
   GetPostError,
   GetMePostError,
   DeletePostError,
 } from "../controllers/posts/post-types.js";
-import { sessionMiddleware } from "./middlewares/session-middleware.js";
+import { sessionMiddleware } from "./middlewares/session-middleware";
 
 export const postRoutes = new Hono();
 

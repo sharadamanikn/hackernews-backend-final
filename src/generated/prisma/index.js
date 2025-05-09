@@ -202,7 +202,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\USER\\OneDrive\\Desktop\\hackernews-backend-final\\prisma\\generated\\prisma",
+      "value": "C:\\Users\\USER\\OneDrive\\Desktop\\hackernews-backend-final\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -220,10 +220,10 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": "../../../.env",
+    "rootEnvPath": null,
     "schemaEnvPath": "../../../.env"
   },
-  "relativePath": "../..",
+  "relativePath": "../../../prisma",
   "clientVersion": "6.7.0",
   "engineVersion": "3cff47a7f5d65c3ea74883f1d736e41d68ce91ed",
   "datasourceNames": [
@@ -239,8 +239,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./generated/prisma\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_URL\")\n}\n\nmodel User {\n  id              String  @id @default(uuid())\n  username        String  @unique\n  displayUsername String\n  name            String?\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  posts         Post[]\n  comments      Comment[]\n  likes         Like[]\n  email         String\n  emailVerified Boolean\n  image         String?\n  sessions      Session[]\n  accounts      Account[]\n\n  @@unique([email])\n}\n\nmodel Post {\n  id        String   @id @default(uuid())\n  title     String\n  content   String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  userId String\n  user   User   @relation(fields: [userId], references: [id])\n\n  comments Comment[]\n  likes    Like[]\n}\n\nmodel Like {\n  id        String   @id @default(uuid())\n  createdAt DateTime @default(now())\n\n  userId String\n  user   User   @relation(fields: [userId], references: [id])\n\n  postId String\n  post   Post   @relation(fields: [postId], references: [id])\n}\n\nmodel Comment {\n  id        String   @id @default(uuid())\n  content   String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  userId String\n  user   User   @relation(fields: [userId], references: [id])\n\n  postId String\n  post   Post   @relation(fields: [postId], references: [id])\n}\n\nmodel Session {\n  id        String   @id\n  expiresAt DateTime\n  token     String\n  createdAt DateTime\n  updatedAt DateTime\n  ipAddress String?\n  userAgent String?\n  userId    String\n  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@unique([token])\n}\n\nmodel Account {\n  id                    String    @id\n  accountId             String\n  providerId            String\n  userId                String\n  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)\n  accessToken           String?\n  refreshToken          String?\n  idToken               String?\n  accessTokenExpiresAt  DateTime?\n  refreshTokenExpiresAt DateTime?\n  scope                 String?\n  password              String?\n  createdAt             DateTime\n  updatedAt             DateTime\n}\n\nmodel Verification {\n  id         String    @id\n  identifier String\n  value      String\n  expiresAt  DateTime\n  createdAt  DateTime?\n  updatedAt  DateTime?\n}\n",
-  "inlineSchemaHash": "8d272c3e2bd66564a0ab92f5e0733096cd481e27cf524d2e75f189ebc308dcc8",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_URL\")\n}\n\nmodel User {\n  id              String  @id @default(uuid())\n  username        String  @unique\n  displayUsername String\n  name            String?\n\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  posts         Post[]\n  comments      Comment[]\n  likes         Like[]\n  email         String\n  emailVerified Boolean\n  image         String?\n  sessions      Session[]\n  accounts      Account[]\n\n  @@unique([email])\n}\n\nmodel Post {\n  id        String   @id @default(uuid())\n  title     String\n  content   String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  userId String\n  user   User   @relation(fields: [userId], references: [id])\n\n  comments Comment[]\n  likes    Like[]\n}\n\nmodel Like {\n  id        String   @id @default(uuid())\n  createdAt DateTime @default(now())\n\n  userId String\n  user   User   @relation(fields: [userId], references: [id])\n\n  postId String\n  post   Post   @relation(fields: [postId], references: [id])\n}\n\nmodel Comment {\n  id        String   @id @default(uuid())\n  content   String\n  createdAt DateTime @default(now())\n  updatedAt DateTime @updatedAt\n\n  userId String\n  user   User   @relation(fields: [userId], references: [id])\n\n  postId String\n  post   Post   @relation(fields: [postId], references: [id])\n}\n\nmodel Session {\n  id        String   @id\n  expiresAt DateTime\n  token     String\n  createdAt DateTime\n  updatedAt DateTime\n  ipAddress String?\n  userAgent String?\n  userId    String\n  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)\n\n  @@unique([token])\n}\n\nmodel Account {\n  id                    String    @id\n  accountId             String\n  providerId            String\n  userId                String\n  user                  User      @relation(fields: [userId], references: [id], onDelete: Cascade)\n  accessToken           String?\n  refreshToken          String?\n  idToken               String?\n  accessTokenExpiresAt  DateTime?\n  refreshTokenExpiresAt DateTime?\n  scope                 String?\n  password              String?\n  createdAt             DateTime\n  updatedAt             DateTime\n}\n\nmodel Verification {\n  id         String    @id\n  identifier String\n  value      String\n  expiresAt  DateTime\n  createdAt  DateTime?\n  updatedAt  DateTime?\n}\n",
+  "inlineSchemaHash": "61e24897e7e35b7488c6949d5bd7bc175f0a3e888a17e084d38278d180f1ae5a",
   "copyEngine": true
 }
 
@@ -249,7 +249,7 @@ const fs = require('fs')
 config.dirname = __dirname
 if (!fs.existsSync(path.join(__dirname, 'schema.prisma'))) {
   const alternativePaths = [
-    "prisma/generated/prisma",
+    "src/generated/prisma",
     "generated/prisma",
   ]
   
@@ -280,7 +280,7 @@ Object.assign(exports, Prisma)
 
 // file annotations for bundling tools to include these files
 path.join(__dirname, "query_engine-windows.dll.node");
-path.join(process.cwd(), "prisma/generated/prisma/query_engine-windows.dll.node")
+path.join(process.cwd(), "src/generated/prisma/query_engine-windows.dll.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
-path.join(process.cwd(), "prisma/generated/prisma/schema.prisma")
+path.join(process.cwd(), "src/generated/prisma/schema.prisma")
